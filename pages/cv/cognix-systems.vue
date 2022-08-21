@@ -46,7 +46,14 @@ import {
 import TechnoBadges from "~/components/cv/technoBadges.vue";
 
 useMeta({
-  title: 'Cognix-Systems'
+  title: 'Cognix-Systems',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon expérience chez Cognix-Systems'
+    }
+  ]
 })
 
 const technoLanguage: BadgeLanguage[] = [

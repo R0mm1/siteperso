@@ -19,10 +19,17 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: "IndexPage"
-}
+<script setup lang="ts">
+useMeta({
+  title: 'Romain QUENTEL',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Site personnel de Romain QUENTEL'
+    }
+  ]
+})
 </script>
 
 <style scoped lang="scss">

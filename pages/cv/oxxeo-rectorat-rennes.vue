@@ -29,7 +29,14 @@ import {
 
 
 useMeta({
-  title: 'Oxxeo - Rectorat de Rennes'
+  title: 'Oxxeo - Rectorat de Rennes',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon expérience au Rectorat de Rennes pour Oxxeo'
+    }
+  ]
 })
 
 const technoLanguage: BadgeLanguage[] = [

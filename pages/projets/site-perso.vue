@@ -68,7 +68,14 @@ const technoRouting: BadgeRouting[] = [
 ]
 
 useMeta({
-  title: 'Site personnel'
+  title: 'Site personnel',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon site personnel'
+    }
+  ]
 })
 </script>
 

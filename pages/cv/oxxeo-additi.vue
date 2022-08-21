@@ -32,7 +32,14 @@ import {
 } from "~/ts/contracts/cv/Badge";
 
 useMeta({
-  title: 'Oxxeo - Additi'
+  title: 'Oxxeo - Additi',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon expérience chez Additi pour Oxxeo'
+    }
+  ]
 })
 
 const technoLanguage: BadgeLanguage[] = [

@@ -16,7 +16,14 @@
 import ExperienceDetail from "~/components/cv/experienceDetail";
 
 useMeta({
-  title: 'Oxxeo'
+  title: 'Oxxeo',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon expérience chez Oxxeo'
+    }
+  ]
 })
 </script>
 

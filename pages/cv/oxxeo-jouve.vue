@@ -33,7 +33,14 @@ import {
 } from "~/ts/contracts/cv/Badge";
 
 useMeta({
-  title: 'Oxxeo - Luminess (Jouve)'
+  title: 'Oxxeo - Luminess (Jouve)',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon expérience chez Luminess (Jouve) pour Oxxeo'
+    }
+  ]
 })
 
 const technoLanguage: BadgeLanguage[] = [

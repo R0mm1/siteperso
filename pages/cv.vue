@@ -89,6 +89,17 @@ const experiences: ExperienceObject[] = [
     ]
   }
 ]
+
+useMeta({
+  title: 'CV',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon CV'
+    }
+  ]
+})
 </script>
 
 <style lang="scss">

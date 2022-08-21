@@ -58,6 +58,17 @@ const projets: LeftMenuItem[] = [
     page: '/projets/site-perso'
   }
 ]
+
+useMeta({
+  title: 'Projets',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Découvrez mes projets personnels'
+    }
+  ]
+})
 </script>
 
 <style scoped lang="scss">

@@ -31,7 +31,14 @@ import {
 } from "~/ts/contracts/cv/Badge";
 
 useMeta({
-  title: 'Oxxeo - Nehs Digital'
+  title: 'Oxxeo - Nehs Digital',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mon expérience chez Nehs Digital pour Oxxeo'
+    }
+  ]
 })
 
 const technoLanguage: BadgeLanguage[] = [

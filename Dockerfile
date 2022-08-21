@@ -6,9 +6,6 @@ WORKDIR /app
 
 RUN npm i
 RUN npm run build
-
-FROM build
-
 RUN mkdir /app_built
 RUN cp -r /app/.output/* /app_built
 RUN rm -r /app

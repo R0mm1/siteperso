@@ -10,7 +10,8 @@
       <div id="intro" v-if="isMainOpened">
         <h1>Bienvenue sur mon CV</h1>
         <p>
-          Développeur depuis 2016, ma carrière s'oriente principalement autours des technologies de PHP et de Symfony.<br>
+          Développeur depuis 2016, ma carrière s'oriente principalement autours des technologies de PHP et de
+          Symfony.<br>
           Mais j'ai souvent eu l'occasion, lors de mes différentes expériences professionnelles, d'expérimenter et de
           m'améliorer dans des technologies front-end, de déploiement, de conteneurisation... Ces expériences sont
           complétées par mes projets personnels que vous pouvez découvrir
@@ -31,19 +32,19 @@
 
 <script setup lang="ts">
 import LeftMenu from "~/components/share/leftMenu/leftMenu.vue"
-import {watch} from "vue";
+import {computed, watch} from "vue";
 import ExperienceObject from "~/ts/contracts/cv/Experience";
 import CvLeftMenuItem from "~/components/cv/cvLeftMenuItem.vue";
 import LeftMenuMobileOpen from "~/components/share/leftMenu/leftMenuMobileOpen.vue";
 
-const isExperiencesOpen = ref<boolean>(false)
-const isMainOpened = ref<boolean>(true)
-
 const route = useRoute()
+
+const isMainOpened = computed(() => route.fullPath === '/cv')
+
+const isExperiencesOpen = ref<boolean>(false)
 watch(
     () => route.fullPath,
     () => {
-      isMainOpened.value = route.fullPath === '/cv'
       isExperiencesOpen.value = false
     }
 )
@@ -108,11 +109,11 @@ const experiences: ExperienceObject[] = [
   overflow-y: auto;
 }
 
-#intro{
+#intro {
   padding: 0 15px;
   overflow-y: auto;
 
-  @include phone-portrait{
+  @include phone-portrait {
     margin-left: 10px;
   }
 }

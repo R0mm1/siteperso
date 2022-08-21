@@ -34,14 +34,14 @@ import ProjetLeftMenuItem from "~/components/projet/projetLeftMenuItem.vue";
 import LeftMenuMobileOpen from "~/components/share/leftMenu/leftMenuMobileOpen.vue";
 import {watch} from "vue";
 
-const isProjectsOpen = ref<boolean>(false)
-const isMainOpened = ref<boolean>(true)
-
 const route = useRoute()
+
+const isMainOpened = computed(() => route.fullPath === '/projets')
+
+const isProjectsOpen = ref<boolean>(false)
 watch(
     () => route.fullPath,
     () => {
-      isMainOpened.value = route.fullPath === '/projets'
       isProjectsOpen.value = false
     }
 )

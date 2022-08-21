@@ -6,9 +6,23 @@
         <font-awesome-icon :icon="['fas', 'bars']"/>
       </div>
       <div id="main-menu" ref="menuRef" :class="{'isOpened': isMenuOpened}">
-        <a @click="isMenuOpened = false" target="_blank" href="https://www.flickr.com/photos/169546193@N04/">Photos</a>
-        <NuxtLink @click="isMenuOpened = false" to="/projets">Projets</NuxtLink>
-        <NuxtLink @click="isMenuOpened = false" to="/cv">CV</NuxtLink>
+        <div id="navigation-menu">
+          <a @click="isMenuOpened = false" target="_blank"
+             href="https://www.flickr.com/photos/169546193@N04/">Photos</a>
+          <NuxtLink @click="isMenuOpened = false" to="/projets">Projets</NuxtLink>
+          <NuxtLink @click="isMenuOpened = false" to="/cv">CV</NuxtLink>
+        </div>
+        <div id="ext-link-menu">
+          <a aria-label="Aller vers mon profil Linkedin" title="Linkedin" target="_blank" href="https://www.linkedin.com/in/romain-q-7a168915b">
+            <font-awesome-icon :icon="['fab', 'linkedin']"/>
+          </a>
+          <a aria-label="Aller vers ma page Github" title="Github" target="_blank" href="https://github.com/R0mm1">
+            <font-awesome-icon :icon="['fab', 'github']"/>
+          </a>
+          <a aria-label="Aller sur ma galerie Flickr" title="Flickr" target="_blank" href="https://www.flickr.com/photos/169546193@N04/">
+            <font-awesome-icon :icon="['fab', 'flickr']"/>
+          </a>
+        </div>
       </div>
     </header>
     <div class="content">
@@ -19,15 +33,17 @@
 </template>
 
 <script setup lang="ts">
-import { onClickOutside } from '@vueuse/core'
+import {onClickOutside} from '@vueuse/core'
 
 const isMenuOpened = ref(false)
 
 const menuRef = ref(null)
 onClickOutside(
     menuRef,
-    () => {
-      isMenuOpened.value = false
+    (e) => {
+      if((e.target as HTMLElement).closest('#main-menu-icon') === null){
+        isMenuOpened.value = false
+      }
     },
 )
 </script>
@@ -46,7 +62,7 @@ body {
   color: $font;
 }
 
-button{
+button {
   background: transparent;
   border: 1px solid $gold;
   border-radius: 5px;
@@ -54,7 +70,7 @@ button{
   padding: 10px 15px;
 }
 
-a{
+a {
   color: inherit;
 }
 </style>
@@ -94,6 +110,9 @@ header {
   }
 
   #main-menu {
+    display: flex;
+    flex-grow: 1;
+
     @include phone-portrait {
       position: absolute;
       top: calc($headerHeight + $headerPadding + $headerPadding);
@@ -107,10 +126,18 @@ header {
       &:not(.isOpened) {
         display: none;
       }
+    }
+  }
+
+  #navigation-menu {
+    flex-grow: 1;
+
+    @include phone-portrait {
+      display: flex;
+      flex-direction: column;
 
       a {
         margin: 0 !important;
-        width: 100px;
         text-align: center;
       }
     }
@@ -121,6 +148,20 @@ header {
       text-decoration: none;
       color: inherit;
       border-bottom: 1px solid $border;
+    }
+  }
+
+  #ext-link-menu {
+    @include phone-portrait {
+      text-align: center;
+      a {
+        margin: 0 10px !important;
+        font-size: 1.2em;
+      }
+    }
+
+    a {
+      margin: 0 7px;
     }
   }
 }

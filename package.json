@@ -7,9 +7,6 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "@nuxtjs/fontawesome": "^1.1.2",
     "@vueuse/core": "^9.1.0",
     "@vueuse/nuxt": "^9.1.0",
     "nuxt": "3.0.0-rc.6",
@@ -17,6 +14,9 @@
     "sass-loader": "^13.0.2"
   },
   "dependencies": {
-    "@fortawesome/vue-fontawesome": "^3.0.1"
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@nuxtjs/fontawesome": "^1.1.2"
   }
 }

@@ -7,15 +7,15 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@vueuse/core": "^9.1.0",
-    "@vueuse/nuxt": "^9.1.0",
-    "nuxt": "3.0.0-rc.6",
-    "sass": "^1.54.3",
+    "@vueuse/core": "^9.1.1",
+    "@vueuse/nuxt": "^9.1.1",
+    "nuxt": "3.0.0-rc.8",
+    "sass": "^1.54.7",
     "sass-loader": "^13.0.2"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@nuxtjs/fontawesome": "^1.1.2"
   }

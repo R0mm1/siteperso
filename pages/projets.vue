@@ -7,21 +7,6 @@
       <left-menu-mobile-open @click="isProjectsOpen = !isProjectsOpen">
         Projets
       </left-menu-mobile-open>
-      <div id="intro" v-if="isMainOpened">
-        <h1>Découvrez mes projets personnels</h1>
-        <p>
-          Ces projets que je mène sur mon temps libre me permettent d'étancher ma soif de curiosité en matière de
-          technologies. J'y utilise souvent des briques logicielles que je n'utilise pas ou peu dans mes
-          <NuxtLink to="/cv">expériences professionnelles</NuxtLink>, ce qui me permet d'élargir mon horizon de
-          connaissances.
-        </p>
-        <p id="p-dkt">
-          Vous pouvez découvrir ces projets en utilisant le menu ci-contre.
-        </p>
-        <p id="p-mob">
-          Vous pouvez découvrir ces projets en cliquant sur le bouton "Projets" ci-dessus.
-        </p>
-      </div>
       <NuxtChild/>
     </div>
   </div>
@@ -35,8 +20,6 @@ import LeftMenuMobileOpen from "~/components/share/leftMenu/leftMenuMobileOpen.v
 import {watch} from "vue";
 
 const route = useRoute()
-
-const isMainOpened = computed(() => route.fullPath === '/projets')
 
 const isProjectsOpen = ref<boolean>(false)
 watch(
@@ -58,17 +41,6 @@ const projets: LeftMenuItem[] = [
     page: '/projets/site-perso'
   }
 ]
-
-useMeta({
-  title: 'Projets',
-  meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Découvrez mes projets personnels'
-    }
-  ]
-})
 </script>
 
 <style scoped lang="scss">
@@ -77,9 +49,7 @@ useMeta({
 #projets-page {
   position: relative;
   background: $bg1;
+  display: flex;
   height: 100%;
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: left;
 }
 </style>

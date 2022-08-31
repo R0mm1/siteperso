@@ -7,24 +7,6 @@
       <left-menu-mobile-open @click="isExperiencesOpen = !isExperiencesOpen">
         Expériences
       </left-menu-mobile-open>
-      <div id="intro" v-if="isMainOpened">
-        <h1>Bienvenue sur mon CV</h1>
-        <p>
-          Développeur depuis 2016, ma carrière s'oriente principalement autours des technologies de PHP et de
-          Symfony.<br>
-          Mais j'ai souvent eu l'occasion, lors de mes différentes expériences professionnelles, d'expérimenter et de
-          m'améliorer dans des technologies front-end, de déploiement, de conteneurisation... Ces expériences sont
-          complétées par mes projets personnels que vous pouvez découvrir
-          <NuxtLink to="/projets">sur cette page.</NuxtLink>
-        </p>
-        <p id="p-dkt">
-          Vous pouvez naviguer à travers mes différentes expériences en utilisant le menu ci-contre.
-        </p>
-        <p id="p-mob">
-          Vous pouvez retrouver mes différentes expériences professionnelles en cliquant sur le bouton "Expériences"
-          ci-dessus.
-        </p>
-      </div>
       <NuxtChild/>
     </div>
   </div>
@@ -38,8 +20,6 @@ import CvLeftMenuItem from "~/components/cv/cvLeftMenuItem.vue";
 import LeftMenuMobileOpen from "~/components/share/leftMenu/leftMenuMobileOpen.vue";
 
 const route = useRoute()
-
-const isMainOpened = computed(() => route.fullPath === '/cv')
 
 const isExperiencesOpen = ref<boolean>(false)
 watch(
@@ -89,17 +69,6 @@ const experiences: ExperienceObject[] = [
     ]
   }
 ]
-
-useMeta({
-  title: 'CV',
-  meta: [
-    {
-      hid: 'description',
-      name: 'description',
-      content: 'Mon CV'
-    }
-  ]
-})
 </script>
 
 <style lang="scss">
@@ -109,36 +78,13 @@ useMeta({
 #cv-page {
   position: relative;
   background: $bg1;
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: left;
+  display: flex;
   height: 100%;
 }
 
 #experience-detail-container {
   height: 100%;
   overflow-y: auto;
-}
-
-#intro {
-  padding: 0 15px;
-  overflow-y: auto;
-
-  @include phone-portrait {
-    margin-left: 10px;
-  }
-}
-
-#p-mob {
-  display: none;
-}
-
-@include phone-portrait {
-  #p-mob {
-    display: block;
-  }
-  #p-dkt {
-    display: none;
-  }
+  flex-grow: 1;
 }
 </style>

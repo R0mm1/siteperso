@@ -25,7 +25,7 @@ defineProps({
 #left-menu {
   background-color: $bg1;
   padding-top: 5px;
-  width: 250px;
+  flex: 0 0 250px;
   box-shadow: 2px 5px 5px $bg2;
   height: calc(100% - 5px);
   overflow-y: auto;

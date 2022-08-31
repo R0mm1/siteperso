@@ -1,12 +1,17 @@
 <template>
-  <div id="photos-page">
-    <div class="photo-container" v-for="photo in data.data.photoset.photos">
-      <div class="photo-data">
+  <div id="photos-page" :class="{'err': error}">
+    <div class="photo-container" v-if="!error" v-for="photo in data.data.photoset.photos">
+      <NuxtLink :to="'/photos/'+photo.id" class="photo-data">
         <div class="photo-title-container">
           <div class="photo-title">{{ photo.title }}</div>
         </div>
         <img :src="photo.url_m"/>
-      </div>
+      </NuxtLink>
+    </div>
+
+    <div v-if="error">
+      Une erreur s'est produite lors de la récupération des photos...<br>
+      Mais vous pouvez toujours visiter ma <a href="https://www.flickr.com/photos/169546193@N04/" target="_blank">galerie Flickr!</a>
     </div>
   </div>
 </template>
@@ -17,12 +22,13 @@ import Photoset from "~/ts/contracts/photos/Photoset";
 
 const config = useRuntimeConfig()
 
-const {data} = await useAsyncData<{ data: { photoset: Photoset } }>('post', () => {
+const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset } } | null>('post', () => {
   const query = `{
   photoset{
     photos{
       url_m
-      url_s
+      width_m
+      height_m
       title
       id
     }
@@ -33,8 +39,6 @@ const {data} = await useAsyncData<{ data: { photoset: Photoset } }>('post', () =
     body: JSON.stringify({query})
   })
 })
-
-console.log(data.value.data.photoset)
 
 useMeta({
   title: 'Photos',
@@ -56,21 +60,32 @@ $imgBorder: 30px;
 $imgBorderMobile: 10px;
 
 #photos-page{
+  min-height: 100%;
   background-color: $bg1;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
 
-  //max-width to have x columns = x*imgWidth+x(2*imgBorder)+x<pretty margin of 10px at least between photos>
-  @media (max-width: 1480px) {
-    grid-template-columns: auto auto auto;
+  &.err{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
-  @media (max-width: 1110px) {
-    grid-template-columns: auto auto;
-  }
+  &:not(.err){
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 
-  @media (max-width: 740px) {
-    grid-template-columns: auto;
+    //max-width to have x columns = x*imgWidth+x(2*imgBorder)+x<pretty margin of 10px at least between photos>
+    @media (max-width: 1480px) {
+      grid-template-columns: auto auto auto;
+    }
+
+    @media (max-width: 1110px) {
+      grid-template-columns: auto auto;
+    }
+
+    @media (max-width: 740px) {
+      grid-template-columns: auto;
+    }
   }
 }
 

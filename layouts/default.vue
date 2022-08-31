@@ -7,8 +7,7 @@
       </div>
       <div id="main-menu" ref="menuRef" :class="{'isOpened': isMenuOpened}">
         <div id="navigation-menu">
-          <a @click="isMenuOpened = false" target="_blank"
-             href="https://www.flickr.com/photos/169546193@N04/">Photos</a>
+          <NuxtLink @click="isMenuOpened = false" to="/photos">Photos</NuxtLink>
           <NuxtLink @click="isMenuOpened = false" to="/projets">Projets</NuxtLink>
           <NuxtLink @click="isMenuOpened = false" to="/cv">CV</NuxtLink>
         </div>

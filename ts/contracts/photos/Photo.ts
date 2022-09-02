@@ -14,5 +14,11 @@ export default interface Photo{
     height_m?: string
     width_m?: string
 
+    url_b?: string
+    height_b?: string
+    width_b?: string
+
+    flickr_page?: string
+
     exifs: PhotoExif
 }

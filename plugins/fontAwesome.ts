@@ -1,6 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faBars, faCaretRight, faCaretLeft, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faCaretRight, faCaretLeft, faXmark, faExpand } from '@fortawesome/free-solid-svg-icons'
 import {faFlickr, faGithub, faLinkedin} from "@fortawesome/free-brands-svg-icons";
 
 // @ts-ignore
@@ -17,6 +17,8 @@ library.add(faGithub)
 library.add(faLinkedin)
 // @ts-ignore
 library.add(faFlickr)
+// @ts-ignore
+library.add(faExpand)
 
 export default defineNuxtPlugin((nuxtApp) => {
     // @ts-ignore

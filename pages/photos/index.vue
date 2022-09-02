@@ -22,7 +22,7 @@ import Photoset from "~/ts/contracts/photos/Photoset";
 
 const config = useRuntimeConfig()
 
-const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset } } | null>('post', () => {
+const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset } } | null>('photos-page', () => {
   const query = `{
   photoset{
     photos{

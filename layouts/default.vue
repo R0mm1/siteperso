@@ -72,6 +72,10 @@ button {
 a {
   color: inherit;
 }
+
+h1{
+  margin: 20px 0;
+}
 </style>
 <style scoped lang="scss">
 @import "assets/colors";

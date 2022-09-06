@@ -61,15 +61,20 @@ body {
   color: $font;
 }
 
-button {
+button, a.asButton {
   background: transparent;
   border: 1px solid $gold;
   border-radius: 5px;
   color: inherit;
   padding: 10px 15px;
+  display: block;
 }
 
 a {
+  &.asButton{
+    text-decoration: none;
+  }
+
   color: inherit;
 }
 
@@ -80,10 +85,7 @@ h1{
 <style scoped lang="scss">
 @import "assets/colors";
 @import "assets/breakpoints.scss";
-
-$headerHeight: 2.5em;
-$headerPadding: 5px;
-$headerBorderBottomHeight: 1px;
+@import "assets/headerDimensions.scss";
 
 header {
   width: calc(100% - $headerPadding - $headerPadding);
@@ -170,7 +172,7 @@ header {
 }
 
 .content {
-  height: calc(100vh - $headerHeight - $headerPadding - $headerPadding - $headerBorderBottomHeight);
+  height: $remainingWindowHeight;
 }
 
 </style>

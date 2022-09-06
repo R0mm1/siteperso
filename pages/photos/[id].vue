@@ -10,24 +10,15 @@
     </div>
     <div id="photo-view">
       <div id="photo-container">
-        <div id="photo-tools">
-          <div id="icons">
-            <button aria-label="Agrandir la photo" title="Agrandir" @click="isExpandedViewOpened = true">
-              <font-awesome-icon :icon="['fas', 'expand']"/>
-            </button>
-            <a aria-label="Aller sur ma galerie Flickr"
-               title="Voir sur Flickr"
-               target="_blank"
-               :href="photoResponse.data.photo.flickr_page">
-              <font-awesome-icon :icon="['fab', 'flickr']"/>
-            </a>
-          </div>
+        <div id="photo-tools"></div>
+        <div id="photo">
+          <img :src="photoResponse.data.photo.url_m"/>
         </div>
-        <img :src="photoResponse.data.photo.url_m"/>
       </div>
     </div>
-    <div>
+    <div id="photo-info">
       <h1>{{ photoResponse.data.photo.title }}</h1>
+      <action-buttons :flickr-page="photoResponse.data.photo.flickr_page" @expend="isExpandedViewOpened = true"/>
       <p>
         {{ photoResponse.data.photo.description }}
       </p>
@@ -47,8 +38,11 @@
 <script setup lang="ts">
 
 import Photo from "~/ts/contracts/photos/Photo";
+import ActionButtons from "~/components/photos/actionButtons.vue";
 
+const config = useRuntimeConfig()
 const route = useRoute()
+
 type response = { data: { photo: Photo } }
 const {data: photoResponse} = await useAsyncData<response>('photo-page-' + route.params.id, () => {
   const query = `{
@@ -68,7 +62,7 @@ const {data: photoResponse} = await useAsyncData<response>('photo-page-' + route
     }
   }
 }`
-  return $fetch('http://localhost:4000/', {
+  return $fetch(config.public.backendUrl, {
     method: 'POST',
     body: JSON.stringify({query})
   })
@@ -90,11 +84,12 @@ const cameraLens = computed(() => {
 })
 
 const specs = computed(() => {
+  const exifs = photoResponse.value.data.photo.exifs
   const specs = {
-    'Longueur focale': photoResponse.value.data.photo.exifs.focalLength,
-    'ISO': photoResponse.value.data.photo.exifs.iso,
-    'Ouverture': 'f/' + photoResponse.value.data.photo.exifs.fNumber,
-    'Temps d\'exposition': photoResponse.value.data.photo.exifs.exposureTime + ' s'
+    'Longueur focale': exifs.focalLength,
+    'ISO': exifs.iso,
+    'Ouverture': exifs.fNumber ? 'f/' + exifs.fNumber : null,
+    'Temps d\'exposition': exifs.exposureTime ? exifs.exposureTime + ' s' : null
   }
 
   return Object.entries(specs)
@@ -117,23 +112,38 @@ useMeta({
 
 <style scoped lang="scss">
 @import "assets/colors.scss";
+@import "assets/breakpoints.scss";
+@import "assets/headerDimensions.scss";
 
 #photo-page {
-  min-height: 100%;
+  height: 100%;
   background-color: $bg1;
   display: flex;
+  overflow: auto;
 
-  h1 {
-    margin-top: 40px;
+  @include phone-portrait {
+    flex-direction: column;
+  }
+
+  @include desktop {
+    h1 {
+      margin-top: 40px;
+    }
   }
 }
 
 #expanded-view {
+
+  @include phone-portrait {
+    display: none;
+  }
+
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 100vh;
   background: $bg1;
 
   z-index: -1;
@@ -141,7 +151,6 @@ useMeta({
   transition: opacity .1s;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
 
@@ -150,14 +159,26 @@ useMeta({
     opacity: 1;
   }
 
-  #expanded-image-container:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  #expanded-image-container {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    img {
+      display: block;
+      max-height: 100%;
+    }
   }
 
   button {
@@ -171,8 +192,16 @@ useMeta({
 #photo-view {
 
   #photo-container {
+    display: flex;
     position: relative;
-    margin: 40px;
+
+    @include desktop {
+      height: $remainingWindowHeight;
+    }
+
+    @include phone-portrait {
+      flex-direction: column;
+    }
 
     #photo-tools {
       position: absolute;
@@ -181,41 +210,52 @@ useMeta({
       bottom: 0;
       left: 0;
 
-      #icons {
-        position: absolute;
-        bottom: 0;
-        right: 45px;
-        color: $bg1;
-        opacity: 0;
-        transition: opacity .1s;
-      }
-
       &:hover #icons {
         opacity: 1;
       }
+    }
 
-      button {
-        border: none;
+    @include desktop{
+      #photo{
+        height: $remainingWindowHeight;
+      }
+    }
+
+    img {
+      display: block;
+
+      @include desktop {
+        margin: 40px;
+        border: 40px solid $font;
+        max-height: calc(100% - 160px);
+      }
+
+      @include phone-portrait {
+        margin: 0;
+        border: 10px solid;
+        max-width: calc(100vw - 20px);
+        max-height: calc($remainingWindowHeight - 50px);
       }
     }
   }
+}
 
-  img {
-    border: 40px solid white;
-    display: block;
+#photo-info {
+  padding-left: 15px;
+
+  #tech-details {
+    font-size: .9rem;
+    line-height: 1.3rem;
+
+    #camera-lens {
+      line-height: 1.5rem;
+    }
+
+    th {
+      text-align: left;
+    }
   }
 }
 
-#tech-details {
-  font-size: .9rem;
-  line-height: 1.3rem;
 
-  #camera-lens {
-    line-height: 1.5rem;
-  }
-
-  th {
-    text-align: left;
-  }
-}
 </style>

@@ -1,9 +1,9 @@
 import {defineNuxtConfig} from "nuxt";
 
-defineNuxtConfig({
+export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            backendUrl: 'test'
+            backendUrl: ''
         }
     },
     modules: [

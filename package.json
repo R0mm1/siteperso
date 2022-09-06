@@ -7,10 +7,10 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@vueuse/core": "^9.1.1",
-    "@vueuse/nuxt": "^9.1.1",
-    "nuxt": "3.0.0-rc.8",
-    "sass": "^1.54.7",
+    "@vueuse/core": "^9.2.0",
+    "@vueuse/nuxt": "^9.2.0",
+    "nuxt": "3.0.0-rc.9",
+    "sass": "^1.54.8",
     "sass-loader": "^13.0.2"
   },
   "dependencies": {

@@ -46,6 +46,10 @@ defineProps({
   padding-right: 10px;
   display: none;
 
+  button{
+    display: inline;
+  }
+
   @include phone-portrait {
     display: block;
   }

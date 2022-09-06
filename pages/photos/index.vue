@@ -34,7 +34,7 @@ const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset }
     }
   }
 }`
-  return $fetch('http://localhost:4000/', {
+  return $fetch(config.public.backendUrl, {
     method: 'POST',
     body: JSON.stringify({query})
   })

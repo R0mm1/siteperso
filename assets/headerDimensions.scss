@@ -1,0 +1,5 @@
+$headerHeight: 2.5em;
+$headerPadding: 5px;
+$headerBorderBottomHeight: 1px;
+
+$remainingWindowHeight: calc(100vh - $headerHeight - $headerPadding - $headerPadding - $headerBorderBottomHeight);

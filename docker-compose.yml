@@ -3,6 +3,8 @@ services:
   node:
     build:
       context: .
+    environment:
+      NUXT_PUBLIC_BACKEND_URL: "https://api.romain-quentel.ovh/"
     ports:
       - "4000:3000"
     labels:

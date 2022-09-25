@@ -1,6 +1,6 @@
 <template>
   <div id="photos-page" :class="{'err': error}">
-    <div class="photo-container" v-if="!error" v-for="photo in data.data.photoset.photos">
+    <div class="photo-container" :key="photo.id" v-if="!error" v-for="photo in data.data.photoset.photos">
       <NuxtLink :to="'/photos/'+photo.id" class="photo-data">
         <div class="photo-title-container">
           <div class="photo-title">{{ photo.title }}</div>
@@ -37,7 +37,8 @@ const getImgDisplayDimensions = (imgHeight, imgWidth) => {
   }
 }
 
-const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset } } | null>('photos-page', () => {
+type ServerResponse = { data: { photoset: Photoset } } | null
+const {data, pending, error} = await useAsyncData<ServerResponse>('photos-page', () => {
   const query = `{
   photoset{
     photos{
@@ -53,6 +54,10 @@ const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset }
     method: 'POST',
     body: JSON.stringify({query})
   })
+      .then((result: ServerResponse) => {
+        result.data.photoset.photos = result.data.photoset.photos.reverse()
+        return Promise.resolve(result)
+      })
 })
 
 useMeta({
@@ -74,18 +79,18 @@ useMeta({
 $imgBorder: 30px;
 $imgBorderMobile: 10px;
 
-#photos-page{
+#photos-page {
   min-height: 100%;
   background-color: $bg1;
 
-  &.err{
+  &.err {
     display: flex;
     text-align: center;
     justify-content: center;
     flex-direction: column;
   }
 
-  &:not(.err){
+  &:not(.err) {
     display: grid;
     grid-template-columns: auto auto auto auto;
 
@@ -112,10 +117,10 @@ $imgBorderMobile: 10px;
   margin: 10px 0;
 }
 
-.photo-data{
+.photo-data {
   position: relative;
 
-  .photo-title-container{
+  .photo-title-container {
     position: absolute;
     left: 0;
     right: 0;
@@ -127,7 +132,7 @@ $imgBorderMobile: 10px;
     color: $bg1;
   }
 
-  .photo-title{
+  .photo-title {
     height: $imgBorder;
     line-height: $imgBorder;
     opacity: 0;
@@ -137,24 +142,24 @@ $imgBorderMobile: 10px;
     text-overflow: ellipsis;
     margin: 0 $imgBorder;
 
-    @include phone-portrait{
+    @include phone-portrait {
       margin: 0 $imgBorderMobile;
       background: linear-gradient(0deg, #dcdcdc 10px, transparent);
     }
   }
 
-  &:hover .photo-title{
+  &:hover .photo-title {
     opacity: 1;
   }
 }
 
-img{
+img {
   max-width: v-bind('maxImgWidthUnit');
   max-height: v-bind('maxImgHeightUnit');
   border: $imgBorder solid $font;
   display: block;
 
-  @include phone-portrait{
+  @include phone-portrait {
     border-width: $imgBorderMobile;
   }
 }

@@ -5,7 +5,7 @@
         <div class="photo-title-container">
           <div class="photo-title">{{ photo.title }}</div>
         </div>
-        <img :src="photo.url_m"/>
+        <img :src="photo.url_m" :style="getImgDisplayDimensions(photo.height_m, photo.width_m)"/>
       </NuxtLink>
     </div>
 
@@ -21,6 +21,21 @@
 import Photoset from "~/ts/contracts/photos/Photoset";
 
 const config = useRuntimeConfig()
+
+const maxImgWidth = 300;
+const maxImgWidthUnit = maxImgWidth + 'px'
+const maxImgHeight = 350;
+const maxImgHeightUnit = maxImgHeight + 'px'
+
+const getImgDisplayDimensions = (imgHeight, imgWidth) => {
+  const ratioW = imgWidth / maxImgWidth
+  const ratioH = imgHeight / maxImgHeight
+  const ratio = Math.max(ratioH, ratioW, 1)
+  return {
+    'min-height': imgHeight / ratio + 'px',
+    'min-width': imgWidth / ratio + 'px'
+  }
+}
 
 const {data, pending, error} = await useAsyncData<{ data: { photoset: Photoset } } | null>('photos-page', () => {
   const query = `{
@@ -134,8 +149,8 @@ $imgBorderMobile: 10px;
 }
 
 img{
-  max-width: 300px;
-  max-height: 350px;
+  max-width: v-bind('maxImgWidthUnit');
+  max-height: v-bind('maxImgHeightUnit');
   border: $imgBorder solid $font;
   display: block;
 

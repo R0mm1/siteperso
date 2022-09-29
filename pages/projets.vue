@@ -3,7 +3,7 @@
     <left-menu :opened="isProjectsOpen" @wanna-close="isProjectsOpen = false">
       <projet-left-menu-item v-for="projet in projets" :key="projet.title" :item="projet"/>
     </left-menu>
-    <div id="experience-detail-container">
+    <div id="projet-detail-container">
       <left-menu-mobile-open @click="isProjectsOpen = !isProjectsOpen">
         Projets
       </left-menu-mobile-open>
@@ -51,5 +51,9 @@ const projets: LeftMenuItem[] = [
   background: $bg1;
   display: flex;
   height: 100%;
+}
+
+#projet-detail-container{
+  overflow: auto;
 }
 </style>

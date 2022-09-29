@@ -1,6 +1,7 @@
 <template>
   <div>
     <layout-header/>
+    <NuxtLoadingIndicator color="#55450d"/>
     <div id="layout-content">
       <slot/>
     </div>

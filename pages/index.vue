@@ -13,7 +13,7 @@
         <NuxtLink to="/projets">mes projets personnels</NuxtLink>
         .<br>
         Mais il n'y a pas que le code dans ma vie! La photographie y a aussi une place importante. N'hésitez pas à aller
-        faire un tour dans <a target="_blank" href="https://www.flickr.com/photos/169546193@N04/">ma galerie</a>!
+        faire un tour dans <NuxtLink to="/photos">ma galerie</NuxtLink>!
       </p>
     </div>
   </div>

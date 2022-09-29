@@ -5,7 +5,7 @@
         <div class="photo-title-container">
           <div class="photo-title">{{ photo.title }}</div>
         </div>
-        <img :src="photo.url_m" :style="getImgDisplayDimensions(photo.height_m, photo.width_m)"/>
+        <img loading="lazy" :src="photo.url_m" :style="getImgDisplayDimensions(photo.height_m, photo.width_m)"/>
       </NuxtLink>
     </div>
 
@@ -69,6 +69,10 @@ useMeta({
       content: 'Découvrez mon portfolio'
     }
   ]
+})
+
+definePageMeta({
+  layout: 'default-async'
 })
 </script>
 

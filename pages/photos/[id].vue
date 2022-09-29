@@ -108,6 +108,10 @@ useMeta({
     }
   ]
 })
+
+definePageMeta({
+  layout: 'default-async'
+})
 </script>
 
 <style scoped lang="scss">

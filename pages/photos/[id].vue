@@ -164,10 +164,8 @@ definePageMeta({
   }
 
   #expanded-image-container {
-    max-height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-height: 100%;
 
     &:before {
       content: ' ';
@@ -182,6 +180,7 @@ definePageMeta({
     img {
       display: block;
       max-height: 100%;
+      margin: auto;
     }
   }
 
@@ -227,11 +226,23 @@ definePageMeta({
 
     img {
       display: block;
+      transition: all .1s;
 
       @include desktop {
-        margin: 40px;
-        border: 40px solid $font;
-        max-height: calc(100% - 160px);
+        --border-height: 40px;
+
+        @media (max-height: 600px) {
+          --border-height: 20px;
+        }
+
+        @media (max-height: 500px) {
+          --border-height: 10px;
+        }
+
+        margin: var(--border-height);
+        margin-top: 40px;
+        border: var(--border-height) solid $font;
+        max-height: calc(100% - var(--border-height) -  var(--border-height) - var(--border-height) - 40px);
       }
 
       @include phone-portrait {

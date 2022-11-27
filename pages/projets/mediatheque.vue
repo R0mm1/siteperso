@@ -136,7 +136,7 @@ const otherTechnoRouting: BadgeRouting[] = [
   },
 ]
 
-useMeta({
+useHead({
   title: 'Projet de gestion de médiathèque personnelle',
   meta: [
     {

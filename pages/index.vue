@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-useMeta({
+useHead({
   title: 'Romain QUENTEL',
   meta: [
     {

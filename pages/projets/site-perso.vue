@@ -67,7 +67,7 @@ const technoRouting: BadgeRouting[] = [
   }
 ]
 
-useMeta({
+useHead({
   title: 'Site personnel',
   meta: [
     {

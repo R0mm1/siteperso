@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import ExperienceDetail from "~/components/cv/experienceDetail";
 
-useMeta({
+useHead({
   title: 'Oxxeo',
   meta: [
     {

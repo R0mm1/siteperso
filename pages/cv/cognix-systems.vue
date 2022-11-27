@@ -45,7 +45,7 @@ import {
 } from "~/ts/contracts/cv/Badge";
 import TechnoBadges from "~/components/cv/technoBadges.vue";
 
-useMeta({
+useHead({
   title: 'Cognix-Systems',
   meta: [
     {

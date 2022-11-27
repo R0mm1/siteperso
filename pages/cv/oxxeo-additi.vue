@@ -23,7 +23,6 @@ import ExperienceDetail from "~/components/cv/experienceDetail";
 import TechnoBadges from "~/components/cv/technoBadges.vue";
 
 import {
-  BadgeCi,
   BadgeDb,
   BadgeFramework,
   BadgeLanguage,
@@ -31,7 +30,7 @@ import {
   BadgeVersioning
 } from "~/ts/contracts/cv/Badge";
 
-useMeta({
+useHead({
   title: 'Oxxeo - Additi',
   meta: [
     {

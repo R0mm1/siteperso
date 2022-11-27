@@ -5,7 +5,7 @@
         <div class="photo-title-container">
           <div class="photo-title">{{ photo.title }}</div>
         </div>
-        <img loading="lazy" :src="photo.url_m" :style="getImgDisplayDimensions(photo.height_m, photo.width_m)"/>
+        <img loading="lazy" :src="photo.url_m" :style="getImgDisplayDimensions(photo.height_m, photo.width_m)" :alt="photo.title"/>
       </NuxtLink>
     </div>
 
@@ -60,7 +60,7 @@ const {data, pending, error} = await useAsyncData<ServerResponse>('photos-page',
       })
 })
 
-useMeta({
+useHead({
   title: 'Photos',
   meta: [
     {

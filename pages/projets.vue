@@ -7,7 +7,7 @@
       <left-menu-mobile-open @click="isProjectsOpen = !isProjectsOpen">
         Projets
       </left-menu-mobile-open>
-      <NuxtChild/>
+      <NuxtPage/>
     </div>
   </div>
 </template>

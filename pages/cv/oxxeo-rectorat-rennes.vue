@@ -28,7 +28,7 @@ import {
 } from "~/ts/contracts/cv/Badge";
 
 
-useMeta({
+useHead({
   title: 'Oxxeo - Rectorat de Rennes',
   meta: [
     {

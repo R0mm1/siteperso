@@ -5,14 +5,14 @@
         <font-awesome-icon class="caret-right" :icon="['fas', 'xmark']"/>
       </button>
       <div id="expanded-image-container">
-        <img :src="photoResponse.data.photo.url_b"/>
+        <img :src="photoResponse.data.photo.url_b" :alt="photoResponse.data.photo.title"/>
       </div>
     </div>
     <div id="photo-view">
       <div id="photo-container">
         <div id="photo-tools"></div>
         <div id="photo">
-          <img :src="photoResponse.data.photo.url_m"/>
+          <img :src="photoResponse.data.photo.url_m" :alt="photoResponse.data.photo.title"/>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@ const specs = computed(() => {
 
 const isExpandedViewOpened = ref<boolean>(false)
 
-useMeta({
+useHead({
   title: photoResponse.value.data.photo.title,
   meta: [
     {

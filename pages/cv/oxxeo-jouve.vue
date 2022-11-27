@@ -32,7 +32,7 @@ import {
   BadgeVersioning
 } from "~/ts/contracts/cv/Badge";
 
-useMeta({
+useHead({
   title: 'Oxxeo - Luminess (Jouve)',
   meta: [
     {

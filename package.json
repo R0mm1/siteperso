@@ -7,11 +7,12 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "@vueuse/core": "^9.2.0",
-    "@vueuse/nuxt": "^9.2.0",
-    "nuxt": "^3.0.0",
-    "sass": "^1.54.8",
-    "sass-loader": "^13.0.2"
+    "@vueuse/core": "^10.1.0",
+    "@vueuse/nuxt": "^10.1.0",
+    "nuxt": "^3.4.3",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.0.2",
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.2.0",

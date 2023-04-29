@@ -21,4 +21,7 @@ export default interface Photo{
     flickr_page?: string
 
     exifs: PhotoExif
+
+    previous?: string
+    next?: string
 }

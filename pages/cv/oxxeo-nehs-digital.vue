@@ -1,9 +1,16 @@
 <template>
   <experience-detail>
     <template v-slot:title>Nehs Digital</template>
-    <template v-slot:dates>Janvier 2022 - Ajourd'hui</template>
+    <template v-slot:dates>Janvier 2022 - Février 2023</template>
     <template v-slot:content>
-      Travail sur des plateformes web dans le domaine de la santé.
+      Travail sur des plateformes web dans le domaine de la santé.<br>
+      <br>
+      <ul>
+        <li>Estimation des tickets</li>
+        <li>Développement des fonctionnalités en PHP 8, Symfony 5/6 et Angular</li>
+        <li>Écriture des tests unitaires avec PHPUnit</li>
+        <li>Déploiement via Ansible, Jenkins et AWX</li>
+      </ul>
       <h3>Technologies</h3>
       <techno-badges
           :techno-language="technoLanguage"
@@ -44,7 +51,7 @@ useHead({
 const technoLanguage: BadgeLanguage[] = [
   {
     techno: "php",
-    versions: ['5.6', '8']
+    versions: ['8']
   },
   {
     techno: "ts"
@@ -58,7 +65,7 @@ const technoLanguage: BadgeLanguage[] = [
 const technoFramework: BadgeFramework[] = [
   {
     techno: 'symfony',
-    versions: ['6']
+    versions: ['5', '6']
   },
   {
     techno: 'angular'

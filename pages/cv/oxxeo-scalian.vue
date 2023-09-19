@@ -3,7 +3,13 @@
     <template v-slot:title>Scalian</template>
     <template v-slot:dates>Mars 2023 - Mai 2023</template>
     <template v-slot:intro>
-      Travail sur la plateforme OPERAT de l'ADEME.
+      Développement de la plateforme OPERAT de l'ADEME:<br>
+      <br>
+      <ul>
+        <li>Estimation des tickets (poker planning)</li>
+        <li>Développement des fonctionnalités en PHP 7.4/8, Api Platform 2 et Angular</li>
+        <li>Écriture des tests unitaires avec PHPUnit</li>
+      </ul>
     </template>
     <template v-slot:content>
       <h3>Technologies</h3>
@@ -42,10 +48,13 @@ useHead({
 const technoLanguage: BadgeLanguage[] = [
   {
     techno: "php",
-    versions: ['8']
+    versions: ['7.4', '8']
   },
   {
     techno: "js"
+  },
+  {
+    techno: "ts"
   },
   {
     techno: "html",
@@ -65,12 +74,23 @@ const technoFramework: BadgeFramework[] = [
     techno: 'symfony',
     versions: ['6']
   },
+  {
+    techno: 'other',
+    label: 'ApiPlatform'
+  }
 ]
 
 const technoOs: BadgeOs[] = [
   {
     techno: 'windows',
     versions: ['10']
+  },
+  {
+    techno: 'ubuntu',
+    label: 'ubuntu (WSL2)'
+  },
+  {
+    techno: 'debian'
   }
 ]
 

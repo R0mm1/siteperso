@@ -3,7 +3,14 @@
     <template v-slot:title>Additi</template>
     <template v-slot:dates>Juillet 2021 - Décembre 2021</template>
     <template v-slot:intro>
-      Développement du site <a target="_blank" href="https://commerces.ouest-france.fr">Ouest-France Commerces</a>.
+      Développement du site <a target="_blank" href="https://commerces.ouest-france.fr">Ouest-France Commerces</a>.<br>
+      <ul>
+        <li>Participation aux cérémonies Agile (poker planning, revues de sprint...)</li>
+        <li>Développement des fonctionnalités en PHP 7.4/8 et Symfony 5</li>
+        <li>Écriture des tests unitaires avec PHPUnit</li>
+        <li>Déploiement via GitLab</li>
+        <li>Poc de migration du projet en PHP8</li>
+      </ul>
     </template>
     <template v-slot:content>
       <h3>Technologies</h3>

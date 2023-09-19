@@ -123,6 +123,10 @@ const classes = computed(() => {
     background-color: #52a2da;
   }
 
+  &.debian{
+    background-color: #bc5170;
+  }
+
   &.jquery{
     background-color: #0769ad;
   }

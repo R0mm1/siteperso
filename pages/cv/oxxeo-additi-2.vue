@@ -4,6 +4,11 @@
     <template v-slot:dates>Juin 2023 - Août 2023</template>
     <template v-slot:intro>
       Travail sur un logiciel web à usage interne.
+      <ul>
+        <li>Participation aux cérémonies Agile (poker planning, revues de sprint...)</li>
+        <li>Développement des fonctionnalités en PHP 8 et Symfony 5</li>
+        <li>Écriture des tests unitaires avec PHPUnit</li>
+      </ul>
     </template>
     <template v-slot:content>
       <h3>Technologies</h3>

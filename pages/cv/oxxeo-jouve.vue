@@ -3,7 +3,16 @@
     <template v-slot:title>Luminess (Jouve)</template>
     <template v-slot:dates>Février 2019 - Décembre 2020</template>
     <template v-slot:intro>
-      Développement d'API REST en PHP/Symfony, création de clients web en AngularJS et Angular.
+      Développement d'API REST en PHP/Symfony, création de clients web en AngularJS et Angular.<br>
+      <ul>
+        <li>Analyse du besoin, étude de faisabilité et conseil</li>
+        <li>Estimation des temps de développement</li>
+        <li>Développement des évolutions en PHP avec Symfony 2.8, Symfony 3.4, AngularJS et Angular</li>
+        <li>Réalisation des tests unitaires et fonctionnels</li>
+        <li>Réalisation d’un POC autour de la fraude</li>
+        <li>Gestion des retours</li>
+        <li>Travail en agilité</li>
+      </ul>
     </template>
     <template v-slot:content>
       <h3>Technologies</h3>

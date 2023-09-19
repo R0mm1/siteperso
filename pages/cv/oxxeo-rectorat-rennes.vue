@@ -3,7 +3,14 @@
     <template v-slot:title>Rectorat de Rennes</template>
     <template v-slot:dates>Février 2021 - Juillet 2021</template>
     <template v-slot:intro>
-      Maintenance d'une forge logicielle en PHP.
+      Maintenance d'une forge logicielle en PHP.<br>
+      <ul>
+        <li>Analyse du besoin, étude de faisabilité et conseil</li>
+        <li>Écriture des tests unitaires et d’intégration en TDD</li>
+        <li>Développement de plugins en PHP 5.3</li>
+        <li>Écriture de la documentation technique et utilisateur</li>
+        <li>Écriture de campagnes de test sur Squash TM</li>
+      </ul>
     </template>
     <template v-slot:content>
       <h3>Technologies</h3>

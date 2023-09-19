@@ -1,7 +1,7 @@
 <template>
   <div id="icons">
     <button class="icon" id="icon-expend" aria-label="Agrandir la photo" title="Agrandir" @click="$emit('expend')">
-      <ClientOnly><font-awesome-icon :icon="['fas', 'expand']"/></ClientOnly>
+      <font-awesome-icon :icon="['fas', 'expand']"/>
       <span>Agrandir</span>
     </button>
     <a id="icon-view-flickr"
@@ -10,7 +10,7 @@
        title="Voir sur Flickr"
        target="_blank"
        :href="flickrPage">
-      <ClientOnly><font-awesome-icon :icon="['fab', 'flickr']"/></ClientOnly>
+      <font-awesome-icon :icon="['fab', 'flickr']"/>
       <span>Voir sur Flickr</span>
     </a>
   </div>

@@ -2,7 +2,7 @@
   <header>
     <NuxtLink id="title" to="/">Romain Quentel</NuxtLink>
     <div id="main-menu-icon" @click="isMenuOpened = !isMenuOpened">
-      <ClientOnly><font-awesome-icon :icon="['fas', 'bars']"/></ClientOnly>
+      <font-awesome-icon :icon="['fas', 'bars']"/>
     </div>
     <div id="main-menu" ref="menuRef" :class="{'isOpened': isMenuOpened}">
       <div id="navigation-menu">
@@ -12,13 +12,13 @@
       </div>
       <div id="ext-link-menu">
         <a aria-label="Aller vers mon profil Linkedin" title="Linkedin" target="_blank" href="https://www.linkedin.com/in/romain-q-7a168915b">
-          <ClientOnly><font-awesome-icon :icon="['fab', 'linkedin']"/></ClientOnly>
+          <font-awesome-icon :icon="['fab', 'linkedin']"/>
         </a>
         <a aria-label="Aller vers ma page Github" title="Github" target="_blank" href="https://github.com/R0mm1">
-          <ClientOnly><font-awesome-icon :icon="['fab', 'github']"/></ClientOnly>
+          <font-awesome-icon :icon="['fab', 'github']"/>
         </a>
         <a aria-label="Aller sur ma galerie Flickr" title="Flickr" target="_blank" href="https://www.flickr.com/photos/169546193@N04/">
-          <ClientOnly><font-awesome-icon :icon="['fab', 'flickr']"/></ClientOnly>
+          <font-awesome-icon :icon="['fab', 'flickr']"/>
         </a>
       </div>
     </div>

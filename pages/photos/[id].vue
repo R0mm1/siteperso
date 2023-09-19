@@ -2,7 +2,7 @@
   <div id="photo-page">
     <div id="expanded-view" :class="{'opened': isExpandedViewOpened}">
       <button @click="isExpandedViewOpened = false">
-        <ClientOnly><font-awesome-icon class="caret-right" :icon="['fas', 'xmark']"/></ClientOnly>
+        <font-awesome-icon class="caret-right" :icon="['fas', 'xmark']"/>
       </button>
       <div id="expanded-image-container">
         <img :src="photoResponse.data.photo.url_b" :alt="photoResponse.data.photo.title"/>
@@ -25,23 +25,11 @@
       <div id="tech-details">
         <div id="camera-lens">{{ cameraLens }}</div>
         <table>
-          <ClientOnly>
           <tr v-for="spec in specs">
             <th>{{ spec[0] }}</th>
             <td>{{ spec[1] }}</td>
           </tr>
-          </ClientOnly>
         </table>
-      </div>
-      <div id="navigation">
-        <div id="buttons">
-          <NuxtLink :to="'/photos/'+photoResponse.data.photo.previous" class="icon asButton" aria-label="Photo précédente" title="Photo précédente" v-if="photoResponse.data.photo.previous">
-              <ClientOnly><font-awesome-icon class="caret-right" :icon="['fas', 'caret-left']"/></ClientOnly>
-          </NuxtLink>
-          <NuxtLink :to="'/photos/'+photoResponse.data.photo.next" class="icon asButton" aria-label="Photo suivante" title="Photo suivante" v-if="photoResponse.data.photo.next">
-              <ClientOnly><font-awesome-icon class="caret-right" :icon="['fas', 'caret-right']"/></ClientOnly>
-          </NuxtLink>
-        </div>
       </div>
     </div>
   </div>
@@ -64,8 +52,6 @@ const {data: photoResponse} = await useAsyncData<response>('photo-page-' + route
     url_b
     description
     flickr_page
-    next
-    previous
     exifs{
       iso
       lens
@@ -286,22 +272,5 @@ definePageMeta({
   }
 }
 
-#navigation{
-  margin-top: 13px;
-
-  &::before{
-    content: ' ';
-    display: block;
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(to right, transparent, #424242, transparent);
-  }
-
-  #buttons{
-    margin: 13px;
-    display: flex;
-    justify-content: space-between;
-  }
-}
 
 </style>

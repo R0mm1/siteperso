@@ -51,7 +51,7 @@ const experiences: ExperienceObject[] = [
       {
         title: 'Rectorat de Rennes',
         startDate: new Date(2021, 1),
-        endDate: new Date(2021, 6),
+        endDate: new Date(2021, 5),
         page: '/cv/oxxeo-rectorat-rennes',
       },
       {
@@ -63,8 +63,26 @@ const experiences: ExperienceObject[] = [
       {
         title: 'Nehs Digital',
         startDate: new Date(2022, 0),
-        endDate: null,
+        endDate: new Date(2023, 1),
         page: '/cv/oxxeo-nehs-digital',
+      },
+      {
+        title: 'Scalian',
+        startDate: new Date(2023, 2),
+        endDate: new Date(2023, 4),
+        page: '/cv/oxxeo-scalian',
+      },
+      {
+        title: 'Additi',
+        startDate: new Date(2023, 5),
+        endDate: new Date(2023, 7),
+        page: '/cv/oxxeo-additi-2',
+      },
+      {
+        title: 'Luminess',
+        startDate: new Date(2023, 8),
+        endDate: null,
+        page: '/cv/oxxeo-luminess',
       }
     ]
   }

@@ -68,7 +68,7 @@ header {
     text-align: center;
     right: 0;
 
-    @include phone-portrait {
+    @include phone-portrait-big {
       display: inline-block;
     }
   }
@@ -77,7 +77,7 @@ header {
     display: flex;
     flex-grow: 1;
 
-    @include phone-portrait {
+    @include phone-portrait-big {
       position: absolute;
       top: calc($headerHeight + $headerPadding + $headerPadding);
       background-color: $bg1;
@@ -96,7 +96,7 @@ header {
   #navigation-menu {
     flex-grow: 1;
 
-    @include phone-portrait {
+    @include phone-portrait-big {
       display: flex;
       flex-direction: column;
 
@@ -116,7 +116,7 @@ header {
   }
 
   #ext-link-menu {
-    @include phone-portrait {
+    @include phone-portrait-big {
       text-align: center;
       a {
         margin: 0 10px !important;

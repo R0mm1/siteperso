@@ -135,7 +135,7 @@ defineProps({
 @import "assets/breakpoints.scss";
 @import "assets/colors.scss";
 
-@include phone-portrait {
+@include phone-portrait-big {
   .badges-row:not(:last-of-type) {
     th, td {
       border-bottom: 1px solid rgba(0, 0, 0, 0.3);

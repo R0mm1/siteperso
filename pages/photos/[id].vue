@@ -1,44 +1,88 @@
 <template>
+
   <div id="photo-page">
-    <div id="expanded-view" :class="{'opened': isExpandedViewOpened}">
-      <button @click="isExpandedViewOpened = false">
-        <font-awesome-icon class="caret-right" :icon="['fas', 'xmark']"/>
-      </button>
-      <div id="expanded-image-container">
-        <img :src="photoResponse.data.photo.url_b" :alt="photoResponse.data.photo.title"/>
-      </div>
-    </div>
+
     <div id="photo-view">
+
+      <div id="navigate-previous-container" class="navigation-container">
+        <NuxtLink
+            v-if="photoResponse.data.photo.previous"
+            :to="'/photos/'+photoResponse.data.photo.previous"
+            id="navigate-previous"
+            class="icon asButton navigation-button"
+            :class="{'navigation-button-hidden': typeof photoResponse.data.photo.previous !== 'string'}"
+            aria-label="Photo précédente"
+            title="Photo précédente">
+          <ClientOnly>
+            <font-awesome-icon class="caret-right" :icon="['fas', 'caret-left']"/>
+          </ClientOnly>
+        </NuxtLink>
+      </div>
+
       <div id="photo-container">
-        <div id="photo-tools"></div>
         <div id="photo">
-          <img :src="photoResponse.data.photo.url_m" :alt="photoResponse.data.photo.title"/>
+          <div id="photo-tools"></div>
+          <img :src="photoResponse.data.photo.url_b" :alt="photoResponse.data.photo.title"/>
         </div>
       </div>
+
+      <div id="navigate-next-container" class="navigation-container">
+        <NuxtLink
+            v-if="photoResponse.data.photo.next"
+            :to="'/photos/'+photoResponse.data.photo.next"
+            id="navigate-next"
+            class="icon asButton navigation-button"
+            :class="{'navigation-button-hidden': typeof photoResponse.data.photo.next !== 'string'}"
+            aria-label="Photo suivante"
+            title="Photo suivante">
+          <ClientOnly>
+            <font-awesome-icon class="caret-right" :icon="['fas', 'caret-right']"/>
+          </ClientOnly>
+        </NuxtLink>
+      </div>
+
     </div>
-    <div id="photo-info">
+
+    <div id="photo-details">
+
       <h1>{{ photoResponse.data.photo.title }}</h1>
-      <action-buttons :flickr-page="photoResponse.data.photo.flickr_page" @expend="isExpandedViewOpened = true"/>
-      <p>
+
+      <p v-if="photoResponse.data.photo.description.length > 0">
         {{ photoResponse.data.photo.description }}
       </p>
+
+      <a id="view-flickr"
+         class="icon asButton"
+         :aria-label="'Voir la photo '+photoResponse.data.photo.title+' sur Flickr'"
+         :title="'Voir la photo '+photoResponse.data.photo.title+' sur Flickr'"
+         target="_blank"
+         :href="photoResponse.data.photo.flickr_page">
+        <ClientOnly>
+          <font-awesome-icon :icon="['fab', 'flickr']"/>
+        </ClientOnly>
+        <span>Voir sur Flickr</span>
+      </a>
+
       <div id="tech-details">
         <div id="camera-lens">{{ cameraLens }}</div>
         <table>
-          <tr v-for="spec in specs">
-            <th>{{ spec[0] }}</th>
-            <td>{{ spec[1] }}</td>
-          </tr>
+          <ClientOnly>
+            <tr v-for="spec in specs">
+              <th>{{ spec[0] }}</th>
+              <td>{{ spec[1] }}</td>
+            </tr>
+          </ClientOnly>
         </table>
       </div>
+
     </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
 
 import Photo from "~/ts/contracts/photos/Photo";
-import ActionButtons from "~/components/photos/actionButtons.vue";
 
 const config = useRuntimeConfig()
 const route = useRoute()
@@ -52,6 +96,8 @@ const {data: photoResponse} = await useAsyncData<response>('photo-page-' + route
     url_b
     description
     flickr_page
+    next
+    previous
     exifs{
       iso
       lens
@@ -96,8 +142,6 @@ const specs = computed(() => {
       .filter(entry => typeof entry[1] === 'string' && entry[1].length > 0)
 })
 
-const isExpandedViewOpened = ref<boolean>(false)
-
 useHead({
   title: photoResponse.value.data.photo.title,
   meta: [
@@ -119,148 +163,114 @@ definePageMeta({
 @import "assets/breakpoints.scss";
 @import "assets/headerDimensions.scss";
 
+$paddingTop: 40px;
+$h1LineHeight: 40px;
+$separatorSpaceAround: 30px;
+
+$navigationMinWidth: 50px;
+$navigationMargin: 15px;
+
 #photo-page {
-  height: 100%;
+  padding-top: $paddingTop;
+  height: calc(100% - $paddingTop);
+  width: 100%;
   background-color: $bg1;
-  display: flex;
   overflow: auto;
-
-  @include phone-portrait {
-    flex-direction: column;
-  }
-
-  @include desktop {
-    h1 {
-      margin-top: 40px;
-    }
-  }
-}
-
-#expanded-view {
-
-  @include phone-portrait {
-    display: none;
-  }
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  background: $bg1;
-
-  z-index: -1;
-  opacity: 0;
-  transition: opacity .1s;
-
-  display: flex;
-  justify-content: center;
-  text-align: center;
-
-  &.opened {
-    z-index: 20;
-    opacity: 1;
-  }
-
-  #expanded-image-container {
-    display: flex;
-    max-height: 100%;
-
-    &:before {
-      content: ' ';
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-
-    img {
-      display: block;
-      max-height: 100%;
-      margin: auto;
-    }
-  }
-
-  button {
-    position: absolute;
-    right: 40px;
-    top: 40px;
-    z-index: 21;
-  }
 }
 
 #photo-view {
+  display: flex;
 
   #photo-container {
-    display: flex;
-    position: relative;
+    --photoBorder: 40px;
 
-    @include desktop {
-      height: $remainingWindowHeight;
+    @include phone-portrait-big {
+      --photoBorder: 30px;
     }
 
-    @include phone-portrait {
-      flex-direction: column;
+    @include phone-portrait-medium {
+      --photoBorder: 20px;
     }
 
-    #photo-tools {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      &:hover #icons {
-        opacity: 1;
-      }
+    @include phone-portrait-medium {
+      --photoBorder: 10px;
     }
 
-    @include desktop{
-      #photo{
-        height: $remainingWindowHeight;
-      }
+    flex: 1;
+    text-align: center;
+
+    #photo {
+      display: flex;
+      height: calc($remainingWindowHeight - $paddingTop - $h1LineHeight - $separatorSpaceAround - $separatorSpaceAround - $separatorSpaceAround);
+      max-width: calc(100vw - $navigationMinWidth - $navigationMinWidth - $navigationMargin - $navigationMargin);
     }
 
-    img {
-      display: block;
+    #photo img {
+      $loaderSize: 150px;
+
+      max-height: calc(100% - var(--photoBorder) - var(--photoBorder));
+      border: var(--photoBorder) solid $font;
+      margin: auto;
+      min-width: $loaderSize;
+      min-height: $loaderSize;
       transition: all .1s;
-
-      @include desktop {
-        --border-height: 40px;
-
-        @media (max-height: 600px) {
-          --border-height: 20px;
-        }
-
-        @media (max-height: 500px) {
-          --border-height: 10px;
-        }
-
-        margin: var(--border-height);
-        margin-top: 40px;
-        border: var(--border-height) solid $font;
-        max-height: calc(100% - var(--border-height) -  var(--border-height) - var(--border-height) - 40px);
-      }
-
-      @include phone-portrait {
-        margin: 0;
-        border: 10px solid;
-        max-width: calc(100vw - 20px);
-        max-height: calc($remainingWindowHeight - 50px);
-      }
+      background-color: $bg1;
+      background-image: url("/loader.svg");
+      background-size: $loaderSize $loaderSize;
+      background-repeat: no-repeat;
+      background-position: center;
     }
+  }
+
+  .navigation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: $navigationMinWidth;
+  }
+
+  #navigate-previous-container {
+    margin-left: $navigationMargin;
+    align-items: start;
+  }
+
+  #navigate-next-container {
+    margin-right: $navigationMargin;
+    align-items: end;
   }
 }
 
-#photo-info {
-  padding-left: 15px;
+#photo-details {
+  margin: $separatorSpaceAround 10px 0 10px;
+
+  &::before {
+    content: " ";
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, $border, 50%, transparent);
+    width: 50%;
+  }
+
+  h1 {
+    line-height: $h1LineHeight;
+    margin: $separatorSpaceAround 0;
+  }
+
+  #view-flickr {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 1rem;
+
+    span {
+      padding-left: 5px;
+    }
+  }
 
   #tech-details {
     font-size: .9rem;
     line-height: 1.3rem;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
 
     #camera-lens {
       line-height: 1.5rem;
@@ -268,9 +278,9 @@ definePageMeta({
 
     th {
       text-align: left;
+      padding-right: 15px;
+      padding-left: 0;
     }
   }
 }
-
-
 </style>

@@ -27,7 +27,7 @@ $xpDetailsPaddingX: 15px;
   padding: 0 $xpDetailsPaddingX;
   overflow-y: auto;
 
-  @include phone-portrait{
+  @include phone-portrait-big{
     width: calc(100vw - 10px - $xpDetailsPaddingX - $xpDetailsPaddingX - 5px);
     margin-left: 10px;
   }

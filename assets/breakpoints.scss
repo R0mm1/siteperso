@@ -8,16 +8,25 @@
   @media (max-width: 600px) and (orientation: portrait) {
     @content;
   }
+  @media (max-height: 700px) and (orientation: landscape) {
+    @content;
+  }
 }
 
 @mixin phone-portrait-medium {
   @media (max-width: 500px) and (orientation: portrait) {
     @content;
   }
+  @media (max-height: 500px) and (orientation: landscape) {
+    @content;
+  }
 }
 
 @mixin phone-portrait-small {
   @media (max-width: 400px) and (orientation: portrait) {
+    @content;
+  }
+  @media (max-height: 400px) and (orientation: landscape) {
     @content;
   }
 }

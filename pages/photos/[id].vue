@@ -22,7 +22,8 @@
       <div id="photo-container">
         <div id="photo">
           <div id="photo-tools"></div>
-          <img :src="photoResponse.data.photo.url_b" :alt="photoResponse.data.photo.title"/>
+          <img ref="photo" @load="onImageLoaded" :class="{'loaded': imageLoaded}" :src="photoResponse.data.photo.url_b" :alt="photoResponse.data.photo.title"/>
+          <div id="photo-loader" v-if="!imageLoaded"/>
         </div>
       </div>
 
@@ -83,6 +84,7 @@
 <script setup lang="ts">
 
 import Photo from "~/ts/contracts/photos/Photo";
+import { onMounted, ref } from 'vue'
 
 const config = useRuntimeConfig()
 const route = useRoute()
@@ -142,6 +144,23 @@ const specs = computed(() => {
       .filter(entry => typeof entry[1] === 'string' && entry[1].length > 0)
 })
 
+// *** Handle the image loader *** //
+
+//Wait for the image to be loaded
+const imageLoaded = ref(false)
+function onImageLoaded(){
+  imageLoaded.value = true
+}
+
+//If the image is already in the cache, the load event won't be triggered, so we check here the value of the complete
+//property
+const photo = ref(null) // The var name must match the ref value in the html
+onMounted(()=>{
+  imageLoaded.value = photo.value.complete
+})
+
+// *** End Handle the image loader *** //
+
 useHead({
   title: photoResponse.value.data.photo.title,
   meta: [
@@ -200,25 +219,39 @@ $navigationMargin: 15px;
     text-align: center;
 
     #photo {
+      position: relative;
       display: flex;
       height: calc($remainingWindowHeight - $paddingTop - $h1LineHeight - $separatorSpaceAround - $separatorSpaceAround - $separatorSpaceAround);
       max-width: calc(100vw - $navigationMinWidth - $navigationMinWidth - $navigationMargin - $navigationMargin);
     }
 
     #photo img {
-      $loaderSize: 150px;
 
       max-height: calc(100% - var(--photoBorder) - var(--photoBorder));
+      max-width: calc(100% - var(--photoBorder) - var(--photoBorder));
       border: var(--photoBorder) solid $font;
       margin: auto;
-      min-width: $loaderSize;
-      min-height: $loaderSize;
       transition: all .1s;
+      display: none;
+
+      &.loaded{
+        display: initial;
+      }
+    }
+
+    #photo-tools{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    #photo-loader{
       background-color: $bg1;
       background-image: url("/loader.svg");
-      background-size: $loaderSize $loaderSize;
+      background-size: 50px;
       background-repeat: no-repeat;
       background-position: center;
+      width: 100%;
     }
   }
 

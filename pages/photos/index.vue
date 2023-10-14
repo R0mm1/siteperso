@@ -10,7 +10,6 @@
     </div>
 
     <div v-if="error">
-        {{config.public.backendUrl}}
       Une erreur s'est produite lors de la récupération des photos...<br>
       Mais vous pouvez toujours visiter ma <a href="https://www.flickr.com/photos/169546193@N04/" target="_blank">galerie Flickr!</a>
     </div>

@@ -39,7 +39,7 @@ useHead({
   padding: 0 15px;
   overflow-y: auto;
 
-  @include phone-portrait {
+  @include phone-portrait-big {
     margin-left: 10px;
   }
 }
@@ -48,7 +48,7 @@ useHead({
   display: none;
 }
 
-@include phone-portrait {
+@include phone-portrait-big {
   #p-mob {
     display: block;
   }

@@ -61,7 +61,7 @@ useHead({
   border: 2px solid $border-clear;
   border-radius: 5px;
 
-  @include phone-portrait{
+  @include phone-portrait-big{
     width: calc(90% - 30px);
     left: 5%;
   }

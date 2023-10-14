@@ -10,6 +10,7 @@
     </div>
 
     <div v-if="error">
+        {{config.public.backendUrl}}
       Une erreur s'est produite lors de la récupération des photos...<br>
       Mais vous pouvez toujours visiter ma <a href="https://www.flickr.com/photos/169546193@N04/" target="_blank">galerie Flickr!</a>
     </div>
@@ -146,7 +147,7 @@ $imgBorderMobile: 10px;
     text-overflow: ellipsis;
     margin: 0 $imgBorder;
 
-    @include phone-portrait {
+    @include phone-portrait-big {
       margin: 0 $imgBorderMobile;
       background: linear-gradient(0deg, #dcdcdc 10px, transparent);
     }
@@ -163,7 +164,7 @@ img {
   border: $imgBorder solid $font;
   display: block;
 
-  @include phone-portrait {
+  @include phone-portrait-big {
     border-width: $imgBorderMobile;
   }
 }

@@ -49,7 +49,7 @@ const classes = computed(() => {
   color: black;
   border: 1px solid transparent;
 
-  @include phone-portrait{
+  @include phone-portrait-big{
     margin-bottom: 2px;
     margin-top: 2px;
   }

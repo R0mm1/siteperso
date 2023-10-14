@@ -3,8 +3,21 @@
     @content;
   }
 }
-@mixin phone-portrait {
-  @media (max-width: 600px) {
+
+@mixin phone-portrait-big {
+  @media (max-width: 600px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin phone-portrait-medium {
+  @media (max-width: 500px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin phone-portrait-small {
+  @media (max-width: 400px) and (orientation: portrait) {
     @content;
   }
 }

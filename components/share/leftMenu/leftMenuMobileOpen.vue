@@ -16,7 +16,7 @@
   margin-top: 5px;
   display: none;
 
-  @include phone-portrait {
+  @include phone-portrait-big {
     display: block;
   }
 }

@@ -154,7 +154,7 @@ useHead({
 #projet-mediatheque {
   padding: 0 15px;
 
-  @include phone-portrait{
+  @include phone-portrait-big{
     margin-left: 10px;
   }
 }

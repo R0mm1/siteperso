@@ -30,7 +30,7 @@ defineProps({
   height: calc(100% - 5px);
   overflow-y: auto;
 
-  @include phone-portrait {
+  @include phone-portrait-big {
     position: absolute;
     width: 100vw;
     left: calc(-100vw + 10px);
@@ -50,7 +50,7 @@ defineProps({
     display: inline;
   }
 
-  @include phone-portrait {
+  @include phone-portrait-big {
     display: block;
   }
 }

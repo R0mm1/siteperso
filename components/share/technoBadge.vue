@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import {PropType} from "vue";
-import {Badge} from "~/ts/contracts/cv/Badge";
+import type {PropType} from "vue";
+import type {Badge} from "~/ts/contracts/cv/Badge";
 
 const props = defineProps({
   badge: Object as PropType<Badge>

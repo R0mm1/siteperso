@@ -1,4 +1,4 @@
-import {onMounted, ref, Ref, watch} from "vue";
+import {onMounted, ref, type Ref, watch} from "vue";
 
 export function enhanced(elementPage: string){
     const route = useRoute()

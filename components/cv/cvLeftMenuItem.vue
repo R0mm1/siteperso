@@ -24,8 +24,8 @@
 
 <script setup lang="ts">
 import LeftMenuItem from "~/components/share/leftMenu/leftMenuItem.vue";
-import {defineAsyncComponent, PropType} from "vue";
-import Experience from "~/ts/contracts/cv/Experience";
+import {defineAsyncComponent, type PropType} from "vue";
+import type Experience from "~/ts/contracts/cv/Experience";
 
 const cvLeftMenuItemChild = defineAsyncComponent(() => import('./cvLeftMenuItem.vue'))
 

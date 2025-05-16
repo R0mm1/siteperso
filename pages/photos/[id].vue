@@ -83,7 +83,7 @@
 
 <script setup lang="ts">
 
-import Photo from "~/ts/contracts/photos/Photo";
+import type Photo from "~/ts/contracts/photos/Photo";
 import { onMounted, ref } from 'vue'
 
 const config = useRuntimeConfig()

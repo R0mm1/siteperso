@@ -28,7 +28,7 @@
 import ExperienceDetail from "~/components/cv/experienceDetail";
 import TechnoBadges from "~/components/cv/technoBadges.vue";
 
-import {
+import type {
   BadgeCi,
   BadgeDb,
   BadgeFramework,

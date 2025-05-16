@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import LeftMenu from "~/components/share/leftMenu/leftMenu.vue"
 import {watch} from "vue";
-import ExperienceObject from "~/ts/contracts/cv/Experience";
+import type ExperienceObject from "~/ts/contracts/cv/Experience";
 import CvLeftMenuItem from "~/components/cv/cvLeftMenuItem.vue";
 import LeftMenuMobileOpen from "~/components/share/leftMenu/leftMenuMobileOpen.vue";
 

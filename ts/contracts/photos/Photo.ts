@@ -1,4 +1,4 @@
-import PhotoExif from "./PhotoExif";
+import type PhotoExif from "./PhotoExif";
 
 export default interface Photo{
     id: string

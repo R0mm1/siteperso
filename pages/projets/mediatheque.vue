@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import {
+import type {
   BadgeAuthentication,
   BadgeCi,
   BadgeDb,

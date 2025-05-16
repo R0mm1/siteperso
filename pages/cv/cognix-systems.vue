@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import ExperienceDetail from "~/components/cv/experienceDetail";
-import {
+import type {
   BadgeCi,
   BadgeDb,
   BadgeFramework,

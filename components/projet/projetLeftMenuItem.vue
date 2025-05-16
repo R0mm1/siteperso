@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 import LeftMenuItem from "~/components/share/leftMenu/leftMenuItem.vue";
-import LeftMenuItemObject from '~/ts/contracts/components/leftMenu/LeftMenuItem';
-import {PropType} from "vue";
+import type LeftMenuItemObject from '~/ts/contracts/components/leftMenu/LeftMenuItem';
+import type {PropType} from "vue";
 
 const props = defineProps({
   item: {

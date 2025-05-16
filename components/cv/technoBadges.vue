@@ -64,8 +64,8 @@
 </template>
 
 <script setup lang="ts">
-import {PropType} from "vue";
-import {
+import type {PropType} from "vue";
+import type {
   Badge, BadgeAuthentication,
   BadgeCi,
   BadgeDb,

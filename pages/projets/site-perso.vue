@@ -24,7 +24,7 @@
 <script setup lang="ts">
 
 import GithubBadge from "~/components/share/githubBadge.vue";
-import {BadgeCi, BadgeFramework, BadgeLanguage, BadgeRouting} from "~/ts/contracts/cv/Badge";
+import type {BadgeCi, BadgeFramework, BadgeLanguage, BadgeRouting} from "~/ts/contracts/cv/Badge";
 import TechnoBadges from "~/components/cv/technoBadges.vue";
 
 const technoLanguage: BadgeLanguage[] = [

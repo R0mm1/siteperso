@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 
-import Photoset from "~/ts/contracts/photos/Photoset";
+import type Photoset from "~/ts/contracts/photos/Photoset";
 
 const config = useRuntimeConfig()
 

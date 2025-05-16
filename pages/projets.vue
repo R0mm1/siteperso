@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import LeftMenu from "~/components/share/leftMenu/leftMenu.vue"
-import LeftMenuItem from "~/ts/contracts/components/leftMenu/LeftMenuItem";
+import type LeftMenuItem from "~/ts/contracts/components/leftMenu/LeftMenuItem";
 import ProjetLeftMenuItem from "~/components/projet/projetLeftMenuItem.vue";
 import LeftMenuMobileOpen from "~/components/share/leftMenu/leftMenuMobileOpen.vue";
 import {watch} from "vue";
